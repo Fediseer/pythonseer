@@ -18,8 +18,8 @@ if not fediverse_domain:
 if not fediverse_domain:
     raise Exception("You need to provide a fediverse domain via env var or arg")
 
-pythonseer = Fediseer()
-details = pythonseer.whitelist.get_domain(fediverse_domain)
+fediseer = Fediseer()
+details = fediseer.whitelist.get_domain(fediverse_domain)
 if details:
     print(json.dumps(details, indent=4))
 else:

@@ -19,8 +19,8 @@ if not fediverse_domain:
 if not fediverse_domain:
     raise Exception("You need to provide a fediverse domain via env var or arg")
 
-pythonseer = Fediseer()
-censures = pythonseer.censure.get_given(fediverse_domain, FormatType.CSV)
+fediseer = Fediseer()
+censures = fediseer.censure.get_given(fediverse_domain, FormatType.CSV)
 if censures:
     print(f"{fediverse_domain} has censured the following instances: {censures['csv']}")
 else:

@@ -5,8 +5,8 @@ from pythonseer import Fediseer
 from pythonseer.types import FormatType
 
 
-pythonseer = Fediseer()
-suspicions = pythonseer.suspicions.get(
+fediseer = Fediseer()
+suspicions = fediseer.suspicions.get(
     activity_suspicion=30,
     format=FormatType.LIST
 )

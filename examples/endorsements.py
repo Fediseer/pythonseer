@@ -19,8 +19,8 @@ if not fediverse_domain:
 if not fediverse_domain:
     raise Exception("You need to provide a fediverse domain via env var or arg")
 
-pythonseer = Fediseer()
-endorsements = pythonseer.endorsement.get_received(fediverse_domain, FormatType.LIST)
+fediseer = Fediseer()
+endorsements = fediseer.endorsement.get_received(fediverse_domain, FormatType.LIST)
 if endorsements:
     print(f"{fediverse_domain} has been endorsed by the following instances: {endorsements['domains']}")
 else:
