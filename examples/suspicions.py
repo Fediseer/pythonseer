@@ -11,6 +11,6 @@ suspicions = pythonseer.suspicions.get(
     format=FormatType.LIST
 )
 if suspicions:
-    print(f"The following instances are considered suspicious {suspicions}")
+    print(f"The following instances are considered suspicious {suspicions['domains']}")
 else:
     print("Retrieval of suspicious instances failed")

@@ -7,7 +7,6 @@ class FormatType(Enum):
     CSV = auto()
 
     def get_query(self, query_join=''):
-        print(self)
         if self == FormatType.FULL:
             return ""
         elif self == FormatType.LIST:

@@ -22,6 +22,6 @@ if not fediverse_domain:
 pythonseer = Fediseer()
 endorsements = pythonseer.endorsement.get_received(fediverse_domain, FormatType.LIST)
 if endorsements:
-    print(f"{fediverse_domain} has been endorsed by the following instances: {endorsements}")
+    print(f"{fediverse_domain} has been endorsed by the following instances: {endorsements['domains']}")
 else:
     print("Retrieval of instance endorsements failed")

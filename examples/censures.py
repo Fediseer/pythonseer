@@ -22,6 +22,6 @@ if not fediverse_domain:
 pythonseer = Fediseer()
 censures = pythonseer.censure.get_given(fediverse_domain, FormatType.CSV)
 if censures:
-    print(f"{fediverse_domain} has censured the following instances: {censures}")
+    print(f"{fediverse_domain} has censured the following instances: {censures['csv']}")
 else:
     print("Retrieval of instance censures failed")
