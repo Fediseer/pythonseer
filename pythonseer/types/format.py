@@ -6,11 +6,11 @@ class FormatType(Enum):
     LIST = auto()
     CSV = auto()
 
-    @classmethod
-    def get_query(cls, query_join=''):
-        if cls == cls.FULL:
+    def get_query(self, query_join=''):
+        print(self)
+        if self == FormatType.FULL:
             return ""
-        elif cls == cls.LIST:
+        elif self == FormatType.LIST:
             return f"{query_join}domains=true"
-        elif cls == cls.CSV:
+        elif self == FormatType.CSV:
             return f"{query_join}csv=true"
