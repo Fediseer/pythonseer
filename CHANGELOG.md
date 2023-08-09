@@ -1,12 +1,28 @@
 # Changelog
 
-## [0.0.1](https://github.com/db0/pythonseer/tree/0.0.1) (2023-08-09)
+## [v0.1.2](https://github.com/db0/pythonseer/tree/v0.1.2) (2023-08-09)
 
-[Full Changelog](https://github.com/db0/pythonseer/compare/v0.1.0...0.0.1)
+[Full Changelog](https://github.com/db0/pythonseer/compare/v0.1.1...v0.1.2)
+
+**Merged pull requests:**
+
+- fix: package name [\#3](https://github.com/db0/pythonseer/pull/3) ([db0](https://github.com/db0))
+
+## [v0.1.1](https://github.com/db0/pythonseer/tree/v0.1.1) (2023-08-09)
+
+[Full Changelog](https://github.com/db0/pythonseer/compare/v0.1.0...v0.1.1)
+
+**Merged pull requests:**
+
+- Fix lemmy publish [\#2](https://github.com/db0/pythonseer/pull/2) ([db0](https://github.com/db0))
 
 ## [v0.1.0](https://github.com/db0/pythonseer/tree/v0.1.0) (2023-08-09)
 
-[Full Changelog](https://github.com/db0/pythonseer/compare/41d38f11b23fe5f15caf0078e50a175cbcfecb07...v0.1.0)
+[Full Changelog](https://github.com/db0/pythonseer/compare/0.0.1...v0.1.0)
+
+## [0.0.1](https://github.com/db0/pythonseer/tree/0.0.1) (2023-08-09)
+
+[Full Changelog](https://github.com/db0/pythonseer/compare/41d38f11b23fe5f15caf0078e50a175cbcfecb07...0.0.1)
 
 **Merged pull requests:**
 
