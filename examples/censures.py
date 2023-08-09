@@ -1,9 +1,8 @@
 
-## python examples/user.py db0
+## python examples/censures.py db0
 
 import os
 import argparse
-import json
 from pythonseer import Fediseer
 from pythonseer.types import FormatType
 

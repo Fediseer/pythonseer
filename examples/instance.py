@@ -1,5 +1,5 @@
 
-## python examples/user.py db0
+## python examples/instance.py db0
 
 import os
 import argparse
@@ -21,6 +21,6 @@ if not fediverse_domain:
 pythonseer = Fediseer()
 details = pythonseer.whitelist.get_domain(fediverse_domain)
 if details:
-    print(details)
+    print(json.dumps(details, indent=4))
 else:
     print("Retrieval of instance details failed")
