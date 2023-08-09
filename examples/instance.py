@@ -12,7 +12,7 @@ args = arg_parser.parse_args()
 
 
 
-fediverse_domain = args.pythonseer_domain
+fediverse_domain = args.fediverse_domain
 if not fediverse_domain:
     fediverse_domain = os.getenv('FEDIVERSE_DOMAIN', "lemmy.dbzer0.com")
 if not fediverse_domain:
