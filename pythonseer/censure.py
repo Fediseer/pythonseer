@@ -86,6 +86,9 @@ class Censure:
             domain_csv = self._requestor.home_domain
             if not domain_csv:
                 raise Exception("Must provide a domain or login to GET /censures_given/ endpoint")
+        # Handle sending the domain name as str gracefully
+        elif type(domain_set) is str:
+            domain_csv = domain_set
         else:
             domain_csv = ','.join(domain_set)
         endpoint =  f"/censures_given/{domain_csv}{format.get_query('?')}"
