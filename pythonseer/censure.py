@@ -89,8 +89,4 @@ class Censure:
         else:
             domain_csv = ','.join(domain_set)
         endpoint =  f"/censures_given/{domain_csv}{format.get_query('?')}"
-        if csv:
-            endpoint += "?csv=true"
-        elif domains:
-            endpoint += "?domains=true"
         return self._requestor.api(Request.GET, endpoint)
