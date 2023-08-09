@@ -9,7 +9,6 @@ from pythonseer.types import FormatType
 
 
 arg_parser = argparse.ArgumentParser()
-arg_parser.add_argument('username', action="store")
 arg_parser.add_argument('-d', '--fediverse_domain', action='store', required=False, type=str, help="the fediverse instance domain for which to look up censures")
 args = arg_parser.parse_args()
 
