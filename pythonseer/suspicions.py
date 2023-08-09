@@ -28,4 +28,4 @@ class Suspicions:
             Optional[dict]: put data if successful
         """
         endpoint = f"/instances?activity_suspicion={activity_suspicion}&active_suspicion={active_suspicion}{format.get_query('&')}"
-        return self._requestor.api(Request.PUT, endpoint)
+        return self._requestor.api(Request.GET, endpoint)

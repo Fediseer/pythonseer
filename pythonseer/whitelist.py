@@ -27,7 +27,7 @@ class Whitelist:
             Optional[dict]: put data if successful
         """
         endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}{format.get_query('&')}"
-        return self._requestor.api(Request.PUT, endpoint)
+        return self._requestor.api(Request.GET, endpoint)
 
     def get_domain(
         self,
@@ -44,7 +44,7 @@ class Whitelist:
         Returns:
             Optional[dict]: put data if successful
         """
-        return self._requestor.api(Request.PUT, f"/whitelist/{domain}")
+        return self._requestor.api(Request.GET, f"/whitelist/{domain}")
 
     def claim(
         self,
