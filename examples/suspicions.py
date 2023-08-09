@@ -4,11 +4,11 @@
 import os
 import argparse
 import json
-from pythonseer import PythonSeer
+from pythonseer import Fediseer
 from pythonseer.types import FormatType
 
 
-pythonseer = PythonSeer()
+pythonseer = Fediseer()
 suspicions = pythonseer.suspicions.get(
     activity_suspicion=30,
     format=FormatType.LIST

@@ -11,7 +11,7 @@ from pythonseer.requestor import Request, Requestor
 
 logger = logging.getLogger(__name__)
 
-class PythonSeer:
+class Fediseer:
     _requestor: Requestor
 
     def __init__(self, api_base_url: str = "https://fediseer.com") -> None:

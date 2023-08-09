@@ -4,7 +4,7 @@
 import os
 import argparse
 import json
-from pythonseer import PythonSeer
+from pythonseer import Fediseer
 from pythonseer.types import FormatType
 
 
@@ -21,7 +21,7 @@ if not fediverse_domain:
 if not fediverse_domain:
     raise Exception("You need to provide a fediverse domain via env var or arg")
 
-pythonseer = PythonSeer()
+pythonseer = Fediseer()
 endorsements = pythonseer.endorsement.get_received(fediverse_domain, FormatType.LIST)
 if endorsements:
     print(f"{fediverse_domain} has been endorsed by the following instances: {endorsements}")

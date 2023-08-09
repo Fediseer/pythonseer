@@ -4,7 +4,7 @@
 import os
 import argparse
 import json
-from pythonseer import PythonSeer
+from pythonseer import Fediseer
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('username', action="store")
@@ -19,7 +19,7 @@ if not fediverse_domain:
 if not fediverse_domain:
     raise Exception("You need to provide a fediverse domain via env var or arg")
 
-pythonseer = PythonSeer()
+pythonseer = Fediseer()
 details = pythonseer.whitelist.get_domain(fediverse_domain)
 if details:
     print(details)

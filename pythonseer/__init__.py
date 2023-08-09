@@ -1,1 +1,1 @@
-from pythonseer.pythonseer import PythonSeer
+from pythonseer.fediseer import Fediseer
