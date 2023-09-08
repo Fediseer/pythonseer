@@ -77,9 +77,9 @@ class Censure:
         If logged-in, defaults to user's home domain
 
         Args:
-            domain_set (set or str)
-            reasons (list)
-            min_censures (int)
+            domain_set (set or str), optional
+            reasons (list), optional
+            min_censures (int), optional
             format (Optional[FormatType], optional): Defaults to FormatType.FULL.
 
         Returns:
