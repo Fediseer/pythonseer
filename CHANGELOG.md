@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.1.3](https://github.com/db0/pythonseer/tree/v0.1.3) (2023-09-08)
+
+[Full Changelog](https://github.com/db0/pythonseer/compare/v0.1.2...v0.1.3)
+
+**Merged pull requests:**
+
+- doc: update [\#4](https://github.com/db0/pythonseer/pull/4) ([db0](https://github.com/db0))
+
 ## [v0.1.2](https://github.com/db0/pythonseer/tree/v0.1.2) (2023-08-09)
 
 [Full Changelog](https://github.com/db0/pythonseer/compare/v0.1.1...v0.1.2)
