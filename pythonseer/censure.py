@@ -10,7 +10,7 @@ class Censure:
 
     def create(
         self,
-        domain: str,
+        domain,
     ) -> Optional[dict]:
         """
         Create a censure
@@ -67,6 +67,8 @@ class Censure:
     def get_given(
         self,
         domain_set: set = None,
+        reasons: list = None,
+        min_censures: int = 1,
         format: Optional[FormatType] = FormatType.FULL
     ) -> Optional[dict]:
         """
@@ -75,8 +77,9 @@ class Censure:
         If logged-in, defaults to user's home domain
 
         Args:
-            domain_set (set)
-            domains (str)
+            domain_set (set or str)
+            reasons (list)
+            min_censures (int)
             format (Optional[FormatType], optional): Defaults to FormatType.FULL.
 
         Returns:
@@ -89,7 +92,13 @@ class Censure:
         # Handle sending the domain name as str gracefully
         elif type(domain_set) is str:
             domain_csv = domain_set
-        else:
+        elif type(domain_set) is set:
             domain_csv = ','.join(domain_set)
-        endpoint =  f"/censures_given/{domain_csv}{format.get_query('?')}"
+        else:
+            raise Exception("'domain' has to be a set or a string")
+        reasons_query = ''
+        if reasons is not None:
+            reasons_csv = ','.join(reasons)
+            reasons_query = f"&reasons_csv={reasons_csv}"
+        endpoint =  f"/censures_given/{domain_csv}?min_censures={min_censures}{reasons_query}{format.get_query('&')}"
         return self._requestor.api(Request.GET, endpoint)
