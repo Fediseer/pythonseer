@@ -2,6 +2,7 @@ import logging
 import time
 from typing import Any, Optional
 
+from pythonseer.hesitation import Hesitation
 from pythonseer.censure import Censure
 from pythonseer.endorsement import Endorsement
 from pythonseer.guarantee import Guarantee
@@ -18,6 +19,7 @@ class Fediseer:
         self._requestor = Requestor()
         self._requestor.set_fediseer_domain(api_base_url)
         self.censure = Censure(self._requestor)
+        self.hesitation = Hesitation(self._requestor)
         self.endorsement = Endorsement(self._requestor)
         self.guarantee = Guarantee(self._requestor)
         self.suspicions = Suspicions(self._requestor)

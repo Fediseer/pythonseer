@@ -9,7 +9,7 @@ from pythonseer.types import FormatType
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument('-d', '--fediverse_domain', action='store', required=False, type=str, help="the fediverse instance domain for which to look up censures")
-arg_parser.add_argument('-m', '--min_censures', action='store', required=False, default=1, type=int, help="The min amount of censures to require for each instance")
+arg_parser.add_argument('-m', '--min_hesitations', action='store', required=False, default=1, type=int, help="The min amount of hesitations to require for each instance")
 arg_parser.add_argument('-r', '--reasons', action='store', required=False, type=str, help="A csv of reasons with which to filter intances")
 args = arg_parser.parse_args()
 
@@ -22,12 +22,12 @@ if not fediverse_domain:
     raise Exception("You need to provide a fediverse domain via env var or arg")
 
 fediseer = Fediseer()
-censures = fediseer.censure.get_given(
+hesitations = fediseer.hesitation.get_given(
     domain_set=fediverse_domain, 
     reasons=args.reasons,
-    min_censures=args.min_censures,
+    min_hesitations=args.min_hesitations,
     format=FormatType.CSV)
-if censures:
-    print(f"{fediverse_domain} has censured the following instances: {censures['csv']}")
+if hesitations:
+    print(f"{fediverse_domain} has hesitated against the following instances: {hesitations['csv']}")
 else:
-    print("Retrieval of instance censures failed")
+    print("Retrieval of instance hesitations failed")

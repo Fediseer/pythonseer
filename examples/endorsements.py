@@ -15,7 +15,7 @@ args = arg_parser.parse_args()
 
 fediverse_domain = args.fediverse_domain
 if not fediverse_domain:
-    fediverse_domain = os.getenv('FEDIVERSE_DOMAIN', "lemmy.dbzer0.com,lemmings.world")
+    fediverse_domain = os.getenv('FEDIVERSE_DOMAIN', "lemmy.dbzer0.com")
 if not fediverse_domain:
     raise Exception("You need to provide a fediverse domain via env var or arg")
 

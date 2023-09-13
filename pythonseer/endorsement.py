@@ -19,7 +19,7 @@ class Endorsement:
 
         Args:
             domain (str)
-            reason Optional (str)
+            reason (str), optional
 
         Returns:
             Optional[dict]: put data if successful
@@ -40,7 +40,7 @@ class Endorsement:
 
         Args:
             domain (str)
-            reason Optional (str)
+            reason (str), optional
 
         Returns:
             Optional[dict]: put data if successful
@@ -93,7 +93,7 @@ class Endorsement:
     def get_given(
         self,
         domain_set: set = None,
-        reasons: list = None,
+        reasons: set = None,
         min_endorsements: int = 1,
         format: Optional[FormatType] = FormatType.FULL
     ) -> Optional[dict]:
@@ -105,7 +105,7 @@ class Endorsement:
         Args:
             domain_set (set)
             domains (str)
-            reasons (list), optional
+            reasons (set or str), optional
             min_endorsements (int), optional
             format (Optional[FormatType], optional): Defaults to FormatType.FULL.
 
@@ -123,7 +123,10 @@ class Endorsement:
             domain_csv = ','.join(domain_set)
         reasons_query = ''
         if reasons is not None:
-            reasons_csv = ','.join(reasons)
+            if type(reasons) is str:
+                reasons_csv = reasons
+            else:
+                reasons_csv = ','.join(reasons)
             reasons_query = f"&reasons_csv={reasons_csv}"
         endpoint =  f"/approvals/{domain_csv}?min_endorsements={min_endorsements}{reasons_query}{format.get_query('&')}"
         return self._requestor.api(Request.GET, endpoint)
