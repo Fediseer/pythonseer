@@ -10,7 +10,9 @@ class Censure:
 
     def create(
         self,
-        domain,
+        domain: str,
+        reason: str = None,
+        evidence: str = None,
     ) -> Optional[dict]:
         """
         Create a censure
@@ -18,11 +20,43 @@ class Censure:
 
         Args:
             domain (str)
+            reason Optional (str)
+            evidence Optional (str)
 
         Returns:
             Optional[dict]: put data if successful
         """
-        return self._requestor.api(Request.PUT, f"/censures/{domain}")
+        payload = {}
+        if reason is not None:
+            payload["reason"] = reason
+        if evidence is not None:
+            payload["evidence"] = evidence
+        return self._requestor.api(Request.PUT, f"/censures/{domain}",json = payload)
+
+    def modify(
+        self,
+        domain: str,
+        reason: str = None,
+        evidence: str = None,
+    ) -> Optional[dict]:
+        """
+        modify a censure
+        Requires to be logged-in
+
+        Args:
+            domain (str)
+            reason Optional (str)
+            evidence Optional (str)
+
+        Returns:
+            Optional[dict]: patch data if successful
+        """
+        payload = {}
+        if reason is not None:
+            payload["reason"] = reason
+        if evidence is not None:
+            payload["evidence"] = evidence
+        return self._requestor.api(Request.PATCH, f"/censures/{domain}",json = payload)
 
     def delete(
         self,

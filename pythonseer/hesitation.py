@@ -4,7 +4,7 @@ from pythonseer.requestor import Request, Requestor
 from pythonseer.types import FormatType
 
 
-class Endorsement:
+class Hesitation:
     def __init__(self, _requestor: Requestor):
         self._requestor = _requestor
 
@@ -12,14 +12,16 @@ class Endorsement:
         self,
         domain: str,
         reason: str = None,
+        evidence: str = None,
     ) -> Optional[dict]:
         """
-        Create an endorsement
+        Create a hesitation
         Requires to be logged-in
 
         Args:
             domain (str)
             reason Optional (str)
+            evidence Optional (str)
 
         Returns:
             Optional[dict]: put data if successful
@@ -27,35 +29,41 @@ class Endorsement:
         payload = {}
         if reason is not None:
             payload["reason"] = reason
-        return self._requestor.api(Request.PUT, f"/endorsements/{domain}", json=payload)
+        if evidence is not None:
+            payload["evidence"] = evidence
+        return self._requestor.api(Request.PUT, f"/hesitations/{domain}",json = payload)
 
     def modify(
         self,
         domain: str,
         reason: str = None,
+        evidence: str = None,
     ) -> Optional[dict]:
         """
-        Modify an endorsement
+        modify a hesitation
         Requires to be logged-in
 
         Args:
             domain (str)
             reason Optional (str)
+            evidence Optional (str)
 
         Returns:
-            Optional[dict]: put data if successful
+            Optional[dict]: patch data if successful
         """
         payload = {}
         if reason is not None:
             payload["reason"] = reason
-        return self._requestor.api(Request.PATCH, f"/endorsements/{domain}", json=payload)
+        if evidence is not None:
+            payload["evidence"] = evidence
+        return self._requestor.api(Request.PATCH, f"/hesitations/{domain}",json = payload)
 
     def delete(
         self,
         domain: str,
     ) -> Optional[dict]:
         """
-        Withdraw an endorsements
+        Withdraw a hesitation
         Requires to be logged-in
 
         Args:
@@ -64,7 +72,7 @@ class Endorsement:
         Returns:
             Optional[dict]: delete data if successful
         """
-        return self._requestor.api(Request.DELETE, f"/endorsements/{domain}")
+        return self._requestor.api(Request.DELETE, f"/hesitations/{domain}")
 
     def get_received(
         self,
@@ -72,7 +80,7 @@ class Endorsement:
         format: Optional[FormatType] = FormatType.FULL
     ) -> Optional[dict]:
         """
-        Retrieve endorsements received by specific domain
+        Retrieve hesitations received by specific domain
         Does not require to be logged-in
         If logged-in, defaults to user's home domain
 
@@ -86,27 +94,26 @@ class Endorsement:
         if not domain:
             domain = self._requestor.home_domain
             if not domain:
-                raise Exception("Must provide a domain or login to GET /endorsements/ endpoint")
-        endpoint =  f"/endorsements/{domain}{format.get_query('?')}"
+                raise Exception("Must provide a domain or login to GET /hesitations/ endpoint")
+        endpoint =  f"/hesitations/{domain}{format.get_query('?')}"
         return self._requestor.api(Request.GET, endpoint)
 
     def get_given(
         self,
         domain_set: set = None,
         reasons: list = None,
-        min_endorsements: int = 1,
+        min_hesitations: int = 1,
         format: Optional[FormatType] = FormatType.FULL
     ) -> Optional[dict]:
         """
-        Retrieve censures given out by specific domain
+        Retrieve hesitations given out by specific domain
         Does not require to be logged-in
         If logged-in, defaults to user's home domain
 
         Args:
-            domain_set (set)
-            domains (str)
+            domain_set (set or str), optional
             reasons (list), optional
-            min_endorsements (int), optional
+            min_hesitations (int), optional
             format (Optional[FormatType], optional): Defaults to FormatType.FULL.
 
         Returns:
@@ -115,15 +122,17 @@ class Endorsement:
         if not domain_set:
             domain_csv = self._requestor.home_domain
             if not domain_csv:
-                raise Exception("Must provide a domain or login to GET /approvals/ endpoint")
+                raise Exception("Must provide a domain or login to GET /hesitations_given/ endpoint")
         # Handle sending the domain name as str gracefully
         elif type(domain_set) is str:
             domain_csv = domain_set
-        else:
+        elif type(domain_set) is set:
             domain_csv = ','.join(domain_set)
+        else:
+            raise Exception("'domain' has to be a set or a string")
         reasons_query = ''
         if reasons is not None:
             reasons_csv = ','.join(reasons)
             reasons_query = f"&reasons_csv={reasons_csv}"
-        endpoint =  f"/approvals/{domain_csv}?min_endorsements={min_endorsements}{reasons_query}{format.get_query('&')}"
+        endpoint =  f"/hesitations_given/{domain_csv}?min_hesitations={min_hesitations}{reasons_query}{format.get_query('&')}"
         return self._requestor.api(Request.GET, endpoint)
