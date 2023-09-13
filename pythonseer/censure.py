@@ -10,7 +10,9 @@ class Censure:
 
     def create(
         self,
-        domain,
+        domain: str,
+        reason: str = None,
+        evidence: str = None,
     ) -> Optional[dict]:
         """
         Create a censure
@@ -18,11 +20,43 @@ class Censure:
 
         Args:
             domain (str)
+            reason (str), optional
+            evidence (str), optional
 
         Returns:
             Optional[dict]: put data if successful
         """
-        return self._requestor.api(Request.PUT, f"/censures/{domain}")
+        payload = {}
+        if reason is not None:
+            payload["reason"] = reason
+        if evidence is not None:
+            payload["evidence"] = evidence
+        return self._requestor.api(Request.PUT, f"/censures/{domain}",json = payload)
+
+    def modify(
+        self,
+        domain: str,
+        reason: str = None,
+        evidence: str = None,
+    ) -> Optional[dict]:
+        """
+        modify a censure
+        Requires to be logged-in
+
+        Args:
+            domain (str)
+            reason (str), optional
+            evidence (str), optional
+
+        Returns:
+            Optional[dict]: patch data if successful
+        """
+        payload = {}
+        if reason is not None:
+            payload["reason"] = reason
+        if evidence is not None:
+            payload["evidence"] = evidence
+        return self._requestor.api(Request.PATCH, f"/censures/{domain}",json = payload)
 
     def delete(
         self,
@@ -67,7 +101,7 @@ class Censure:
     def get_given(
         self,
         domain_set: set = None,
-        reasons: list = None,
+        reasons: set = None,
         min_censures: int = 1,
         format: Optional[FormatType] = FormatType.FULL
     ) -> Optional[dict]:
@@ -78,7 +112,7 @@ class Censure:
 
         Args:
             domain_set (set or str), optional
-            reasons (list), optional
+            reasons (set or str), optional
             min_censures (int), optional
             format (Optional[FormatType], optional): Defaults to FormatType.FULL.
 
@@ -98,7 +132,11 @@ class Censure:
             raise Exception("'domain' has to be a set or a string")
         reasons_query = ''
         if reasons is not None:
-            reasons_csv = ','.join(reasons)
+            if type(reasons) is str:
+                reasons_csv = reasons
+            else:
+                reasons_csv = ','.join(reasons)
             reasons_query = f"&reasons_csv={reasons_csv}"
         endpoint =  f"/censures_given/{domain_csv}?min_censures={min_censures}{reasons_query}{format.get_query('&')}"
+        print(endpoint)
         return self._requestor.api(Request.GET, endpoint)
