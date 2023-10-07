@@ -1,0 +1,21 @@
+name: "Run TODO to Issue"
+on: ["push"]
+jobs:
+    build:
+        runs-on: "ubuntu-latest"
+        steps:
+            - uses: "actions/checkout@v3"
+            - name: "TODO to Issue"
+              uses: "alstr/todo-to-issue-action@v4"
+              with:
+                  AUTO_ASSIGN: true
+#No issues have been created
+#
+#    Make sure your file language is in syntax.json.
+#    The action will not recognise existing TODOs that have already been pushed, unless you run the action manually.
+#    If a similar TO DO appears in the diff as both an addition and deletion, it is assumed to have been moved, so is ignored.
+#    If your workflow is executed but no issue is generated, check your repo permissions by navigating to Settings -> Actions (General) -> Workflow permissions and enable "Read and write permissions".
+#
+#Multiple issues have been created
+#
+#Issues are created whenever the action runs and finds a newly added TO DO in the diff. Rebasing may cause a TO DO to show up in a diff multiple times. This is an acknowledged issue, but you may have some luck by adjusting your workflow file.
