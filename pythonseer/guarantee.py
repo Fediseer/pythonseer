@@ -40,11 +40,7 @@ class Guarantee:
         """
         return self._requestor.api(Request.DELETE, f"/guarantees/{domain}")
 
-    def get_received(
-        self,
-        domain: str = None,
-        format: Optional[FormatType] = FormatType.FULL
-    ) -> Optional[dict]:
+    def get_received(self, domain: str = None, format: Optional[FormatType] = FormatType.FULL) -> Optional[dict]:
         """
         Retrieve guarantees received by specific domain
         Does not require to be logged-in
@@ -61,14 +57,10 @@ class Guarantee:
             domain = self._requestor.home_domain
             if not domain:
                 raise Exception("Must provide a domain or login to GET /guarantees/ endpoint")
-        endpoint =  f"/guarantees/{domain}{format.get_query('?')}"
+        endpoint = f"/guarantees/{domain}{format.get_query('?')}"
         return self._requestor.api(Request.GET, endpoint)
 
-    def get_given(
-        self,
-        domain: set = None,
-        format: Optional[FormatType] = FormatType.FULL
-    ) -> Optional[dict]:
+    def get_given(self, domain: set = None, format: Optional[FormatType] = FormatType.FULL) -> Optional[dict]:
         """
         Retrieve guarantees given out by specific domain
         Does not require to be logged-in
@@ -86,5 +78,5 @@ class Guarantee:
             domain = self._requestor.home_domain
             if not domain:
                 raise Exception("Must provide a domain or login to GET /guarantors/ endpoint")
-        endpoint =  f"/guarantors/{domain}{format.get_query('?')}"
+        endpoint = f"/guarantors/{domain}{format.get_query('?')}"
         return self._requestor.api(Request.GET, endpoint)

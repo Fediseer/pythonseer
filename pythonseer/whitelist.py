@@ -9,10 +9,7 @@ class Whitelist:
         self._requestor = _requestor
 
     def get(
-        self,
-        endorsements: int = 0,
-        guarantors: int = 1,
-        format: Optional[FormatType] = FormatType.FULL
+        self, endorsements: int = 0, guarantors: int = 1, format: Optional[FormatType] = FormatType.FULL
     ) -> Optional[dict]:
         """
         Get complete fediseer whitelist
