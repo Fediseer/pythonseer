@@ -1,0 +1,23 @@
+name: Test
+
+on:
+    pull_request: { }
+    push:
+        branches: [ main ]
+        tags: [ "*" ]
+#    workflow_dispatch:
+jobs:
+    test:
+        runs-on: "ubuntu-latest"
+        steps:
+            - uses: actions/checkout@v2
+            - run: tree
+            - run: sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
+            - run: task setup
+            - uses: nick-fields/retry@v2
+              with:
+                timeout_minutes: 5
+                max_attempts: 3
+                retry_on: error
+                command: task
+

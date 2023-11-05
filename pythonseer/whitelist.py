@@ -9,7 +9,8 @@ class Whitelist:
         self._requestor = _requestor
 
     def get(
-        self, endorsements: int = 0, guarantors: int = 1, format: Optional[FormatType] = FormatType.FULL
+            self, endorsements: int = 0, guarantors: int = 1, format: Optional[FormatType] = FormatType.FULL,
+            software: str = None, domains: bool = False, limit: int = 100
     ) -> Optional[dict]:
         """
         Get complete fediseer whitelist
@@ -19,16 +20,30 @@ class Whitelist:
             endorsements (Optional(int), optional): Defaults to 0
             guarantors (Optional(int), optional): Defaults to 1
             format (Optional[FormatType], optional): Defaults to FormatType.FULL.
+            limit:
+            domains:
+            software:
 
         Returns:
             Optional[dict]: put data if successful
         """
-        endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}{format.get_query('&')}"
+        if domains:
+            if software:
+                endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}&software_csv={software}&domains={domains}&limit={limit}{format.get_query('&')}"
+            if not software:
+                endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}&domains={domains}&limit={limit}{format.get_query('&')}"
+
+        if not domains:  # Yes this can be a if else, but it feels sane in the absence of switch statements 🤷
+            if software:
+                endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}&software_csv={software}&limit={limit}{format.get_query('&')}"
+            if not software:
+                endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}&limit={limit}{format.get_query('&')}"
+
         return self._requestor.api(Request.GET, endpoint)
 
     def get_domain(
-        self,
-        domain: str,
+            self,
+            domain: str,
     ) -> Optional[dict]:
         """
         Get fediseer domain info
@@ -44,8 +59,8 @@ class Whitelist:
         return self._requestor.api(Request.GET, f"/whitelist/{domain}")
 
     def claim(
-        self,
-        domain: str,
+            self,
+            domain: str,
     ) -> Optional[dict]:
         """
         Claim a domain
@@ -60,8 +75,8 @@ class Whitelist:
         return self._requestor.api(Request.PUT, f"/whitelist/{domain}")
 
     def unclaim(
-        self,
-        domain: str,
+            self,
+            domain: str,
     ) -> Optional[dict]:
         """
         Delete a domain claim
@@ -76,8 +91,8 @@ class Whitelist:
         return self._requestor.api(Request.DELETE, f"/whitelist/{domain}")
 
     def reset_apikey(
-        self,
-        domain: str,
+            self,
+            domain: str,
     ) -> Optional[dict]:
         """
         Resets the API key of an admin
