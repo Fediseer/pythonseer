@@ -9,8 +9,13 @@ class Whitelist:
         self._requestor = _requestor
 
     def get(
-            self, endorsements: int = 0, guarantors: int = 1, format: Optional[FormatType] = FormatType.FULL,
-            software: str = None, domains: bool = False, limit: int = 100
+        self,
+        endorsements: int = 0,
+        guarantors: int = 1,
+        format: Optional[FormatType] = FormatType.FULL,
+        software: str = None,
+        domains: bool = False,
+        limit: int = 100,
     ) -> Optional[dict]:
         """
         Get complete fediseer whitelist
@@ -42,8 +47,8 @@ class Whitelist:
         return self._requestor.api(Request.GET, endpoint)
 
     def get_domain(
-            self,
-            domain: str,
+        self,
+        domain: str,
     ) -> Optional[dict]:
         """
         Get fediseer domain info
@@ -59,8 +64,8 @@ class Whitelist:
         return self._requestor.api(Request.GET, f"/whitelist/{domain}")
 
     def claim(
-            self,
-            domain: str,
+        self,
+        domain: str,
     ) -> Optional[dict]:
         """
         Claim a domain
@@ -75,8 +80,8 @@ class Whitelist:
         return self._requestor.api(Request.PUT, f"/whitelist/{domain}")
 
     def unclaim(
-            self,
-            domain: str,
+        self,
+        domain: str,
     ) -> Optional[dict]:
         """
         Delete a domain claim
@@ -91,8 +96,8 @@ class Whitelist:
         return self._requestor.api(Request.DELETE, f"/whitelist/{domain}")
 
     def reset_apikey(
-            self,
-            domain: str,
+        self,
+        domain: str,
     ) -> Optional[dict]:
         """
         Resets the API key of an admin

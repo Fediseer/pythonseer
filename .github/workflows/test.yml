@@ -12,12 +12,11 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: tree
-            - run: sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
-            - run: task setup
+            - run: make setup
             - uses: nick-fields/retry@v2
               with:
                 timeout_minutes: 5
                 max_attempts: 3
                 retry_on: error
-                command: task
+                command: make
 
