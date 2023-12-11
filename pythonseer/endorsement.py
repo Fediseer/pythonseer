@@ -66,11 +66,7 @@ class Endorsement:
         """
         return self._requestor.api(Request.DELETE, f"/endorsements/{domain}")
 
-    def get_received(
-        self,
-        domain: str = None,
-        format: Optional[FormatType] = FormatType.FULL
-    ) -> Optional[dict]:
+    def get_received(self, domain: str = None, format: Optional[FormatType] = FormatType.FULL) -> Optional[dict]:
         """
         Retrieve endorsements received by specific domain
         Does not require to be logged-in
@@ -87,7 +83,7 @@ class Endorsement:
             domain = self._requestor.home_domain
             if not domain:
                 raise Exception("Must provide a domain or login to GET /endorsements/ endpoint")
-        endpoint =  f"/endorsements/{domain}{format.get_query('?')}"
+        endpoint = f"/endorsements/{domain}{format.get_query('?')}"
         return self._requestor.api(Request.GET, endpoint)
 
     def get_given(
@@ -95,7 +91,7 @@ class Endorsement:
         domain_set: set = None,
         reasons: set = None,
         min_endorsements: int = 1,
-        format: Optional[FormatType] = FormatType.FULL
+        format: Optional[FormatType] = FormatType.FULL,
     ) -> Optional[dict]:
         """
         Retrieve censures given out by specific domain
@@ -120,13 +116,13 @@ class Endorsement:
         elif type(domain_set) is str:
             domain_csv = domain_set
         else:
-            domain_csv = ','.join(domain_set)
-        reasons_query = ''
+            domain_csv = ",".join(domain_set)
+        reasons_query = ""
         if reasons is not None:
             if type(reasons) is str:
                 reasons_csv = reasons
             else:
-                reasons_csv = ','.join(reasons)
+                reasons_csv = ",".join(reasons)
             reasons_query = f"&reasons_csv={reasons_csv}"
-        endpoint =  f"/approvals/{domain_csv}?min_endorsements={min_endorsements}{reasons_query}{format.get_query('&')}"
+        endpoint = f"/approvals/{domain_csv}?min_endorsements={min_endorsements}{reasons_query}{format.get_query('&')}"
         return self._requestor.api(Request.GET, endpoint)

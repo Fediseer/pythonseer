@@ -9,10 +9,7 @@ class Suspicions:
         self._requestor = _requestor
 
     def get(
-        self,
-        activity_suspicion: int = 20,
-        active_suspicion: int = 500,
-        format: Optional[FormatType] = FormatType.FULL
+        self, activity_suspicion: int = 20, active_suspicion: int = 500, format: Optional[FormatType] = FormatType.FULL
     ) -> Optional[dict]:
         """
         Get complete fediseer suspicions list

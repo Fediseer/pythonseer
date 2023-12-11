@@ -31,7 +31,7 @@ class Hesitation:
             payload["reason"] = reason
         if evidence is not None:
             payload["evidence"] = evidence
-        return self._requestor.api(Request.PUT, f"/hesitations/{domain}",json = payload)
+        return self._requestor.api(Request.PUT, f"/hesitations/{domain}", json=payload)
 
     def modify(
         self,
@@ -56,7 +56,7 @@ class Hesitation:
             payload["reason"] = reason
         if evidence is not None:
             payload["evidence"] = evidence
-        return self._requestor.api(Request.PATCH, f"/hesitations/{domain}",json = payload)
+        return self._requestor.api(Request.PATCH, f"/hesitations/{domain}", json=payload)
 
     def delete(
         self,
@@ -74,11 +74,7 @@ class Hesitation:
         """
         return self._requestor.api(Request.DELETE, f"/hesitations/{domain}")
 
-    def get_received(
-        self,
-        domain: str = None,
-        format: Optional[FormatType] = FormatType.FULL
-    ) -> Optional[dict]:
+    def get_received(self, domain: str = None, format: Optional[FormatType] = FormatType.FULL) -> Optional[dict]:
         """
         Retrieve hesitations received by specific domain
         Does not require to be logged-in
@@ -95,7 +91,7 @@ class Hesitation:
             domain = self._requestor.home_domain
             if not domain:
                 raise Exception("Must provide a domain or login to GET /hesitations/ endpoint")
-        endpoint =  f"/hesitations/{domain}{format.get_query('?')}"
+        endpoint = f"/hesitations/{domain}{format.get_query('?')}"
         return self._requestor.api(Request.GET, endpoint)
 
     def get_given(
@@ -103,7 +99,7 @@ class Hesitation:
         domain_set: set = None,
         reasons: set = None,
         min_hesitations: int = 1,
-        format: Optional[FormatType] = FormatType.FULL
+        format: Optional[FormatType] = FormatType.FULL,
     ) -> Optional[dict]:
         """
         Retrieve hesitations given out by specific domain
@@ -127,15 +123,17 @@ class Hesitation:
         elif type(domain_set) is str:
             domain_csv = domain_set
         elif type(domain_set) is set:
-            domain_csv = ','.join(domain_set)
+            domain_csv = ",".join(domain_set)
         else:
             raise Exception("'domain' has to be a set or a string")
-        reasons_query = ''
+        reasons_query = ""
         if reasons is not None:
             if type(reasons) is str:
                 reasons_csv = reasons
             else:
-                reasons_csv = ','.join(reasons)
+                reasons_csv = ",".join(reasons)
             reasons_query = f"&reasons_csv={reasons_csv}"
-        endpoint =  f"/hesitations_given/{domain_csv}?min_hesitations={min_hesitations}{reasons_query}{format.get_query('&')}"
+        endpoint = (
+            f"/hesitations_given/{domain_csv}?min_hesitations={min_hesitations}{reasons_query}{format.get_query('&')}"
+        )
         return self._requestor.api(Request.GET, endpoint)

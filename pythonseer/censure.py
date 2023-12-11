@@ -31,7 +31,7 @@ class Censure:
             payload["reason"] = reason
         if evidence is not None:
             payload["evidence"] = evidence
-        return self._requestor.api(Request.PUT, f"/censures/{domain}",json = payload)
+        return self._requestor.api(Request.PUT, f"/censures/{domain}", json=payload)
 
     def modify(
         self,
@@ -56,7 +56,7 @@ class Censure:
             payload["reason"] = reason
         if evidence is not None:
             payload["evidence"] = evidence
-        return self._requestor.api(Request.PATCH, f"/censures/{domain}",json = payload)
+        return self._requestor.api(Request.PATCH, f"/censures/{domain}", json=payload)
 
     def delete(
         self,
@@ -74,11 +74,7 @@ class Censure:
         """
         return self._requestor.api(Request.DELETE, f"/censures/{domain}")
 
-    def get_received(
-        self,
-        domain: str = None,
-        format: Optional[FormatType] = FormatType.FULL
-    ) -> Optional[dict]:
+    def get_received(self, domain: str = None, format: Optional[FormatType] = FormatType.FULL) -> Optional[dict]:
         """
         Retrieve censures received by specific domain
         Does not require to be logged-in
@@ -95,7 +91,7 @@ class Censure:
             domain = self._requestor.home_domain
             if not domain:
                 raise Exception("Must provide a domain or login to GET /censures/ endpoint")
-        endpoint =  f"/censures/{domain}{format.get_query('?')}"
+        endpoint = f"/censures/{domain}{format.get_query('?')}"
         return self._requestor.api(Request.GET, endpoint)
 
     def get_given(
@@ -103,7 +99,7 @@ class Censure:
         domain_set: set = None,
         reasons: set = None,
         min_censures: int = 1,
-        format: Optional[FormatType] = FormatType.FULL
+        format: Optional[FormatType] = FormatType.FULL,
     ) -> Optional[dict]:
         """
         Retrieve censures given out by specific domain
@@ -127,16 +123,16 @@ class Censure:
         elif type(domain_set) is str:
             domain_csv = domain_set
         elif type(domain_set) is set:
-            domain_csv = ','.join(domain_set)
+            domain_csv = ",".join(domain_set)
         else:
             raise Exception("'domain' has to be a set or a string")
-        reasons_query = ''
+        reasons_query = ""
         if reasons is not None:
             if type(reasons) is str:
                 reasons_csv = reasons
             else:
-                reasons_csv = ','.join(reasons)
+                reasons_csv = ",".join(reasons)
             reasons_query = f"&reasons_csv={reasons_csv}"
-        endpoint =  f"/censures_given/{domain_csv}?min_censures={min_censures}{reasons_query}{format.get_query('&')}"
+        endpoint = f"/censures_given/{domain_csv}?min_censures={min_censures}{reasons_query}{format.get_query('&')}"
         print(endpoint)
         return self._requestor.api(Request.GET, endpoint)

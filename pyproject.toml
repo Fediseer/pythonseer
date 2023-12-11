@@ -1,35 +1,50 @@
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "pythonseer"
+version = "0.2.1"
 description = "A python library for interacting with the Fediseer API"
-authors = [
-    {name = "db0", email = "mail@dbzer0.com"},
-]
-version = "v0.2.0"
+authors = ["db0 <mail@dbzer0.com>"]
 readme = "README.md"
-requires-python = ">=3.8,<=3.12"
-license = { file="LICENSE" }
+homepage="https://github.com/db0/pythonseer"
+license = "GPL-3.0-or-later"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Development Status :: 2 - Pre-Alpha",
 ]
-dependencies = [
-    "requests >= 2.31.0, < 3.0.0"
-]
 
-[project.urls]
-"Homepage" = "https://github.com/db0/pythonseer"
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
 
-[tool.setuptools]
-license-files = ["LICENSE", "CHANGELOG*"]
+
+[tool.poetry.group.test.dependencies]
+setuptools = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-pycharm = "*"
+python-dotenv = "*"
+vulture = "*"
+typing_extensions ="*"
+pylint = "*"
+whispers = "*"
+Flake8-pyproject="*"
+tartufo="*"
+ruff = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 
 [tool.pytest.ini_options]
 minversion = "7.0"
+pythonpath = ["."]
+log_cli = true
+log_cli_level = "DEBUG"
+log_cli_format = "[%(asctime)s] [%(levelname)8s] --- %(message)s (%(filename)s:%(funcName)s():%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
 addopts = [
     "--import-mode=prepend",
     "--ignore=nodes"
@@ -42,8 +57,6 @@ testpaths = [
     "tests"
 ]
 
-[tool.black]
-line-length = 119
 
 [tool.ruff] # XXX this isn't part of CI yet
 line-length=119
@@ -58,7 +71,7 @@ ignore=[
 select = [
     "A",    # flake8-builtins
     "I",    # isort
-    # "S",    # Bandit
+    "S",    # Bandit
     "F",    # pyflakes
     "E",    # pycodestyle errors
     "W",    # pycodestyle warnings
@@ -81,4 +94,26 @@ select = [
     # "ARG",  # flake8-unused-arguments
     # "TRY",  # tryceratops
     "RUF100"
+]
+
+
+[tool.tartufo]
+repo-path = "."
+regex = true
+entropy = true
+exclude-path-patterns = [
+ {path-pattern = 'poetry\.lock'},
+ {path-pattern = 'pyproject\.toml'},
+ # To not have to escape `\` in regexes, use single quoted
+ # TOML 'literal strings'
+ {path-pattern = 'docs/source/(.*)\.rst'},
+ {path-pattern = 'fedi_gatus/config_gen/base.template.yaml'},
+]
+exclude-entropy-patterns = [
+    {path-pattern = '\.github/workflows/.*\.yml', pattern = 'uses: .*@[a-zA-Z0-9]{40}', reason = 'GitHub Actions'},
+    {path-pattern = 'poetry\.lock', pattern = '.'},
+    {path-pattern = 'Pipfile\.lock', pattern = '.'},
+    {path-pattern = 'README\.md', pattern = '.'},
+    {path-pattern = 'CHANGELOG\.md', pattern = '.'},
+    {path-pattern = 'mapping\.cfg', pattern = '.'}, # Git secret
 ]

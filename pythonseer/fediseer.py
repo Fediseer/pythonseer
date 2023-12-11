@@ -2,15 +2,16 @@ import logging
 import time
 from typing import Any, Optional
 
-from pythonseer.hesitation import Hesitation
 from pythonseer.censure import Censure
 from pythonseer.endorsement import Endorsement
 from pythonseer.guarantee import Guarantee
+from pythonseer.hesitation import Hesitation
+from pythonseer.requestor import Request, Requestor
 from pythonseer.suspicions import Suspicions
 from pythonseer.whitelist import Whitelist
-from pythonseer.requestor import Request, Requestor
 
 logger = logging.getLogger(__name__)
+
 
 class Fediseer:
     _requestor: Requestor

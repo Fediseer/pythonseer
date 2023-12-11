@@ -12,7 +12,10 @@ class Whitelist:
         self,
         endorsements: int = 0,
         guarantors: int = 1,
-        format: Optional[FormatType] = FormatType.FULL
+        format: Optional[FormatType] = FormatType.FULL,
+        software: str = None,
+        domains: bool = False,
+        limit: int = 100,
     ) -> Optional[dict]:
         """
         Get complete fediseer whitelist
@@ -22,11 +25,25 @@ class Whitelist:
             endorsements (Optional(int), optional): Defaults to 0
             guarantors (Optional(int), optional): Defaults to 1
             format (Optional[FormatType], optional): Defaults to FormatType.FULL.
+            limit:
+            domains:
+            software:
 
         Returns:
             Optional[dict]: put data if successful
         """
-        endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}{format.get_query('&')}"
+        if domains:
+            if software:
+                endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}&software_csv={software}&domains={domains}&limit={limit}{format.get_query('&')}"
+            if not software:
+                endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}&domains={domains}&limit={limit}{format.get_query('&')}"
+
+        if not domains:  # Yes this can be a if else, but it feels sane in the absence of switch statements 🤷
+            if software:
+                endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}&software_csv={software}&limit={limit}{format.get_query('&')}"
+            if not software:
+                endpoint = f"/whitelist?endorsements={endorsements}&guarantors={guarantors}&limit={limit}{format.get_query('&')}"
+
         return self._requestor.api(Request.GET, endpoint)
 
     def get_domain(
