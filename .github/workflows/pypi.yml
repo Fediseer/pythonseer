@@ -1,4 +1,4 @@
-name:  Pythonseer build and publish
+name:  Pythonseer build and publish via label
 
 on:
   push:

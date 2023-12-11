@@ -1,4 +1,4 @@
-name: Release
+name: Pythonseer build and publish via tag
 
 on:
   push:
@@ -6,16 +6,31 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        permissions:
-          contents: write
-        steps:
-        - uses: actions/checkout@v3
-        - uses: BobAnkh/auto-generate-changelog@v1.2.5
-          with:
-            ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        - uses: ncipollo/release-action@v1
-          with:
-            allowUpdates: true
-            generateReleaseNotes: true
+    build-n-publish:
+      runs-on: ubuntu-latest
+      permissions:
+        contents: write
+      steps:
+      - name: "✔️ Checkout"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: "✏️ Generate release changelog"
+        uses: BobAnkh/auto-generate-changelog@v1.2.5
+        with:
+          ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          generateReleaseNotes: true
+      - name: "🛠 Install and publish with poetry"
+        run: |
+            make setup
+            poetry build
+            poetry publish
+      - name: "🤖 Announce on lemmy.dbzer0.com"
+        run: |
+            python -m pip install pythorhead
+            python .github/workflows/publish_on_lemmy.py ${{ env.RELEASE_VERSION }}
+        env:
+          LEMMY_BOT_PASSWORD: ${{ secrets.LEMMY_BOT_PASSWORD }}
