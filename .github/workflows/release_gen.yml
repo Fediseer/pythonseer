@@ -24,9 +24,10 @@ jobs:
           allowUpdates: true
           generateReleaseNotes: true
       - name: "🛠 Install and publish with poetry"
-        uses: JRubics/poetry-publish@v1
-        with:
-          pypi_token: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+            make setup
+            poetry config pypi-token.pypi "${{ secrets.PYPI_API_TOKEN }}"
+            poetry publish --build
       - name: "🤖 Announce on lemmy.dbzer0.com"
         run: |
             python -m pip install pythorhead
