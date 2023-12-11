@@ -1,8 +1,4 @@
-name:  Pythonseer build and publish
-
-permissions:
-  contents: write
-  pull-requests: read
+name:  Pythonseer build and publish via label
 
 on:
   push:
