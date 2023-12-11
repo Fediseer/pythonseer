@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v0.3.3](https://github.com/Fediseer/pythonseer/releases/tag/v0.3.3) - 2023-12-11 11:41:29
+
+*No description*
+
 ## [v0.3.2](https://github.com/Fediseer/pythonseer/releases/tag/v0.3.2) - 2023-12-11 11:24:17
 
 *No description*
