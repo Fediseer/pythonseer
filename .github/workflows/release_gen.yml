@@ -15,6 +15,7 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+          BRANCH: main
       - name: "✏️ Generate release changelog"
         uses: BobAnkh/auto-generate-changelog@v1.2.5
         with:
