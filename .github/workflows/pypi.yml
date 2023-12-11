@@ -66,6 +66,6 @@ jobs:
       if: ${{ steps.release.outputs.version != '' }}
       run: |
           python -m pip install pythorhead
-          python .github/publish_on_lemmy.py ${{ steps.release.outputs.version }}
+          python .github/workflows/publish_on_lemmy.py ${{ steps.release.outputs.version }}
       env:
         LEMMY_BOT_PASSWORD: ${{ secrets.LEMMY_BOT_PASSWORD }}
