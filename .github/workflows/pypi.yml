@@ -1,5 +1,9 @@
 name:  Pythonseer build and publish
 
+permissions:
+  contents: write
+  pull-requests: read
+
 on:
   push:
     branches:
