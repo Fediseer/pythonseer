@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [v0.3.1](https://github.com/Fediseer/pythonseer/releases/tag/v0.3.1) - 2023-12-11 10:45:38
+
+*No description*
+
+### Fix
+
+- general:
+  - CI publish (#13) ([66141b9](https://github.com/Fediseer/pythonseer/commit/66141b9307527d0dedd80a9d4d81c6a39ca79fed)) ([#13](https://github.com/Fediseer/pythonseer/pull/13))
+  - pypi publish (#12) ([fcf18e6](https://github.com/Fediseer/pythonseer/commit/fcf18e605dd70b3d44c37b834796b431c489fbe3)) ([#12](https://github.com/Fediseer/pythonseer/pull/12))
+
 ## [v0.3.0](https://github.com/Fediseer/pythonseer/releases/tag/v0.3.0) - 2023-12-11 10:20:25
 
 Switch to poetry
@@ -13,64 +23,17 @@ Switch to poetry
 
 Version 0.2.0
 
-
-
-## What's Changed
-* feat: Hesitations by @db0 in https://github.com/db0/pythonseer/pull/5
-
-
-**Full Changelog**: https://github.com/db0/pythonseer/compare/v0.1.3...v0.2.0
-
-### Feature
-
-- general:
-  - Hesitations (#5) ([9a77c77](https://github.com/Fediseer/pythonseer/commit/9a77c77bebcff29183c5523d6be87c805d9e52fc)) ([#5](https://github.com/Fediseer/pythonseer/pull/5))
-
 ## [v0.1.3](https://github.com/Fediseer/pythonseer/releases/tag/v0.1.3) - 2023-09-08 12:54:51
 
 Version 0.1.3
-
-
-
-## What's Changed
-* doc: update by @db0 in https://github.com/db0/pythonseer/pull/4
-
-
-**Full Changelog**: https://github.com/db0/pythonseer/compare/v0.1.2...v0.1.3
-
-### Feature
-
-- general:
-  - allow to use reasons  and min_censures in get_given ([c283fea](https://github.com/Fediseer/pythonseer/commit/c283fea59da23fc3ec6f6eae92a90057165f8e2b))
 
 ## [v0.1.2](https://github.com/Fediseer/pythonseer/releases/tag/v0.1.2) - 2023-08-09 13:50:53
 
 Version 0.1.2
 
-
-
-## What's Changed
-* fix: package name by @db0 in https://github.com/db0/pythonseer/pull/3
-
-
-**Full Changelog**: https://github.com/db0/pythonseer/compare/v0.1.1...v0.1.2
-
-### Fix
-
-- general:
-  - package name ([69b799d](https://github.com/Fediseer/pythonseer/commit/69b799d53347e14a6cd1fbcd5d3e190f41bc567c)) ([#3](https://github.com/Fediseer/pythonseer/pull/3))
-
 ## [v0.1.1](https://github.com/Fediseer/pythonseer/releases/tag/v0.1.1) - 2023-08-09 13:47:52
 
 Version 0.1.1
-
-
-
-## What's Changed
-* Fix lemmy publish by @db0 in https://github.com/db0/pythonseer/pull/2
-
-
-**Full Changelog**: https://github.com/db0/pythonseer/compare/0.0.1...v0.1.1
 
 ## [0.0.1](https://github.com/Fediseer/pythonseer/releases/tag/0.0.1) - 2023-08-09 13:38:37
 
