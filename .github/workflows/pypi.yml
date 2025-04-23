@@ -4,6 +4,17 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      release:
+        description: 'Release version type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   build-n-publish:
@@ -16,11 +27,11 @@ jobs:
         fetch-depth: 0
     - name: "📣 Release on push"
       id: release
-      uses: rymndhng/release-on-push-action@v0.28.0
+      uses: rymndhng/release-on-push-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        bump_version_scheme: norelease
+        bump_version_scheme: ${{ github.event_name == 'push' && 'norelease' || inputs.release }}
         use_github_release_notes: true
     - name: "✏️ Generate release changelog"
       if: ${{ steps.release.outputs.version != '' }}
