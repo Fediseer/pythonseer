@@ -63,7 +63,7 @@ class Requestor:
     def log_in(self, api_key: str) -> bool:
         self.headers["apikey"] = api_key
         login_req = self.api(Request.POST, "/find_instance", timeout=3)
-        if not login_req.ok:
+        if not login_req:
             return False
         self.home_domain = login_req["domain"]
         return True
