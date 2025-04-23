@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.3.5](https://github.com/Fediseer/pythonseer/tree/v0.3.5) (2025-04-23)
+
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.3.4...v0.3.5)
+
 ## [v0.3.4](https://github.com/Fediseer/pythonseer/tree/v0.3.4) (2025-04-23)
 
 [Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.3.3...v0.3.4)

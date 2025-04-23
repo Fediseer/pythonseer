@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pythonseer"
-version = "v0.3.4"
+version = "v0.3.5"
 description = "A python library for interacting with the Fediseer API"
 authors = ["db0 <mail@dbzer0.com>"]
 readme = "README.md"
