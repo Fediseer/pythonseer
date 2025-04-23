@@ -1,62 +1,97 @@
-# CHANGELOG
+# Changelog
 
-## [v0.3.3](https://github.com/Fediseer/pythonseer/releases/tag/v0.3.3) - 2023-12-11 11:41:29
+## [v0.3.4](https://github.com/Fediseer/pythonseer/tree/v0.3.4) (2025-04-23)
 
-*No description*
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.3.3...v0.3.4)
 
-## [v0.3.2](https://github.com/Fediseer/pythonseer/releases/tag/v0.3.2) - 2023-12-11 11:24:17
+**Merged pull requests:**
 
-*No description*
+- fix: login check [\#43](https://github.com/Fediseer/pythonseer/pull/43) ([db0](https://github.com/db0))
+- build\(deps-dev\): bump ruff from 0.1.7 to 0.1.13 [\#21](https://github.com/Fediseer/pythonseer/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps-dev\): bump pytest from 7.4.3 to 7.4.4 [\#19](https://github.com/Fediseer/pythonseer/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps-dev\): bump setuptools from 69.0.2 to 69.0.3 [\#18](https://github.com/Fediseer/pythonseer/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps-dev\): bump pylint from 3.0.2 to 3.0.3 [\#16](https://github.com/Fediseer/pythonseer/pull/16) ([dependabot[bot]](https://github.com/apps/dependabot))
 
-## [v0.3.1](https://github.com/Fediseer/pythonseer/releases/tag/v0.3.1) - 2023-12-11 10:45:38
+## [v0.3.3](https://github.com/Fediseer/pythonseer/tree/v0.3.3) (2023-12-11)
 
-*No description*
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.3.2...v0.3.3)
 
-### Fix
+## [v0.3.2](https://github.com/Fediseer/pythonseer/tree/v0.3.2) (2023-12-11)
 
-- general:
-  - CI publish (#13) ([66141b9](https://github.com/Fediseer/pythonseer/commit/66141b9307527d0dedd80a9d4d81c6a39ca79fed)) ([#13](https://github.com/Fediseer/pythonseer/pull/13))
-  - pypi publish (#12) ([fcf18e6](https://github.com/Fediseer/pythonseer/commit/fcf18e605dd70b3d44c37b834796b431c489fbe3)) ([#12](https://github.com/Fediseer/pythonseer/pull/12))
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.3.1...v0.3.2)
 
-## [v0.3.0](https://github.com/Fediseer/pythonseer/releases/tag/v0.3.0) - 2023-12-11 10:20:25
+**Merged pull requests:**
 
-Switch to poetry
+- ci: use code-specialist/pypi-poetry-publish [\#14](https://github.com/Fediseer/pythonseer/pull/14) ([db0](https://github.com/db0))
 
-### Feature
+## [v0.3.1](https://github.com/Fediseer/pythonseer/tree/v0.3.1) (2023-12-11)
 
-- general:
-  - Added args for whitelist and CICD 💗 (#8) ([1c61cdd](https://github.com/Fediseer/pythonseer/commit/1c61cdd6ce21d7a56a7dc299159e9a36bec9f905)) ([#8](https://github.com/Fediseer/pythonseer/pull/8))
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.3.0...v0.3.1)
 
-## [v0.2.0](https://github.com/Fediseer/pythonseer/releases/tag/v0.2.0) - 2023-09-13 16:14:18
+**Merged pull requests:**
 
-Version 0.2.0
+- fix: CI publish [\#13](https://github.com/Fediseer/pythonseer/pull/13) ([db0](https://github.com/db0))
+- fix: pypi publish [\#12](https://github.com/Fediseer/pythonseer/pull/12) ([db0](https://github.com/db0))
 
-## [v0.1.3](https://github.com/Fediseer/pythonseer/releases/tag/v0.1.3) - 2023-09-08 12:54:51
+## [v0.3.0](https://github.com/Fediseer/pythonseer/tree/v0.3.0) (2023-12-11)
 
-Version 0.1.3
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.2.0...v0.3.0)
 
-## [v0.1.2](https://github.com/Fediseer/pythonseer/releases/tag/v0.1.2) - 2023-08-09 13:50:53
+**Closed issues:**
 
-Version 0.1.2
+- Add extra arguments to white list pull [\#7](https://github.com/Fediseer/pythonseer/issues/7)
 
-## [v0.1.1](https://github.com/Fediseer/pythonseer/releases/tag/v0.1.1) - 2023-08-09 13:47:52
+**Merged pull requests:**
 
-Version 0.1.1
+- build\(deps-dev\): bump typing-extensions from 4.8.0 to 4.9.0 [\#11](https://github.com/Fediseer/pythonseer/pull/11) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps-dev\): bump ruff from 0.1.4 to 0.1.7 [\#10](https://github.com/Fediseer/pythonseer/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps-dev\): bump setuptools from 68.2.2 to 69.0.2 [\#9](https://github.com/Fediseer/pythonseer/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Added args for whitelist and CICD 💗 [\#8](https://github.com/Fediseer/pythonseer/pull/8) ([Jelloeater](https://github.com/Jelloeater))
 
-## [0.0.1](https://github.com/Fediseer/pythonseer/releases/tag/0.0.1) - 2023-08-09 13:38:37
+## [v0.2.0](https://github.com/Fediseer/pythonseer/tree/v0.2.0) (2023-09-13)
 
-First release
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.1.3...v0.2.0)
 
-### Fix
+**Merged pull requests:**
 
-- general:
-  - graceful domain_set as str ([a570a2c](https://github.com/Fediseer/pythonseer/commit/a570a2c4cd703fa2ae2ec13424f78027e02f75cd))
-  - censures ([8ac2db4](https://github.com/Fediseer/pythonseer/commit/8ac2db4cf8a23afe62c3fa66312505cb6b1dd088))
-  - output ([db7b4ef](https://github.com/Fediseer/pythonseer/commit/db7b4ef0a5c315916c7b69f85ad95bd55453560c))
-  - enum ([060db6c](https://github.com/Fediseer/pythonseer/commit/060db6c242024314a6a728ef77672cfcf897a073))
-  - examples ([039ec0f](https://github.com/Fediseer/pythonseer/commit/039ec0fc48359049f4b5e981d576c6a8f778b7fc))
-  - methods ([c1d1780](https://github.com/Fediseer/pythonseer/commit/c1d17801a2513b499844d96e6f91a9f464a94e7d))
-  - domain arg ([cef7c2b](https://github.com/Fediseer/pythonseer/commit/cef7c2b7653a22b251dbf2f83cfa6982460b334b))
-  - remove username arg ([ae1aee0](https://github.com/Fediseer/pythonseer/commit/ae1aee03ebfa5f7406dda7402cec046b29e87cbe))
+- feat: Hesitations [\#5](https://github.com/Fediseer/pythonseer/pull/5) ([db0](https://github.com/db0))
 
-\* *This CHANGELOG was automatically generated by [auto-generate-changelog](https://github.com/BobAnkh/auto-generate-changelog)*
+## [v0.1.3](https://github.com/Fediseer/pythonseer/tree/v0.1.3) (2023-09-08)
+
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.1.2...v0.1.3)
+
+**Merged pull requests:**
+
+- doc: update [\#4](https://github.com/Fediseer/pythonseer/pull/4) ([db0](https://github.com/db0))
+
+## [v0.1.2](https://github.com/Fediseer/pythonseer/tree/v0.1.2) (2023-08-09)
+
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.1.1...v0.1.2)
+
+**Merged pull requests:**
+
+- fix: package name [\#3](https://github.com/Fediseer/pythonseer/pull/3) ([db0](https://github.com/db0))
+
+## [v0.1.1](https://github.com/Fediseer/pythonseer/tree/v0.1.1) (2023-08-09)
+
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/v0.1.0...v0.1.1)
+
+**Merged pull requests:**
+
+- Fix lemmy publish [\#2](https://github.com/Fediseer/pythonseer/pull/2) ([db0](https://github.com/db0))
+
+## [v0.1.0](https://github.com/Fediseer/pythonseer/tree/v0.1.0) (2023-08-09)
+
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/0.0.1...v0.1.0)
+
+## [0.0.1](https://github.com/Fediseer/pythonseer/tree/0.0.1) (2023-08-09)
+
+[Full Changelog](https://github.com/Fediseer/pythonseer/compare/41d38f11b23fe5f15caf0078e50a175cbcfecb07...0.0.1)
+
+**Merged pull requests:**
+
+- First release on pypi [\#1](https://github.com/Fediseer/pythonseer/pull/1) ([db0](https://github.com/db0))
+
+
+
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
